@@ -1,8 +1,0 @@
-binary_counter, 1
-light_level, 2
-theremin, 3
-send, 4
-receive, 5
-speaker_test, 6
-duet_part1, 7
-duet_part2, 8
