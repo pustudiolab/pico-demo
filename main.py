@@ -92,10 +92,23 @@ while True:
     program_led.on()
     binary_display(leds, 0)
     
+    def get_prog_num(light_level):
+        return (1<<min(max(light_level,0),8))-1
+
+    # Select program
+    # - uses average of last ten pot readings and converts to binary
+    # - only updates when value changes
+    prog_num = -1
+    readings = []
     while program_button.value() == 1:
-        reading = pot.read_u16()
-        light_level = round(8.*reading/65536.)
-        binary_display(leds, (1<<min(max(light_level,0),8))-1)
+        readings.append(pot.read_u16())
+        if (len(readings) > 100):
+            readings = readings[1:]
+        avg_reading = sum(readings)/len(readings)
+        light_level = round(8.*(avg_reading)/65536.)
+        if prog_num == -1 or get_prog_num(light_level) != prog_num:
+            prog_num = get_prog_num(light_level)
+            binary_display(leds, prog_num)
         
     searchnum = min(max(light_level,0),8)
     binary_display(leds, searchnum)
