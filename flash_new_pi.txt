@@ -1,0 +1,19 @@
+cd C:\Users\StudioLab\Dropbox\DEMOBOARD_SOFTWARE\FINAL
+C:\Users\StudioLab\AppData\Local\Programs\Python\Python39\Scripts\rshell.exe
+boards
+
+COPY THE BELOW (INCLUDING LINE BREAK AT THE END) AND PASTE INTO REPL
+
+cp main.py /pyboard
+cp programs.txt /pyboard
+cp shakedown.py /pyboard
+cp light_level.py /pyboard
+cp theremin.py /pyboard
+cp send.py /pyboard
+cp receive.py /pyboard
+cp speaker_test.py /pyboard
+cp bouree_in_e_minor.txt /pyboard
+cp duet_part1.py /pyboard
+cp mario_1.txt /pyboard
+cp duet_part2.py /pyboard
+cp mario_2.txt /pyboard
