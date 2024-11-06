@@ -1,7 +1,7 @@
 binary_counter, 1
 light_level, 2
 theremin, 3
-speaker_test, 4
+mario, 4
 pulse, 5
 shakedown, 6
 duet_part1, 7
