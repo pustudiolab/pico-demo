@@ -3,6 +3,6 @@ light_level, 2
 theremin, 3
 mario, 4
 pulse, 5
-shakedown, 6
+disco, 6
 duet_part1, 7
 duet_part2, 8
