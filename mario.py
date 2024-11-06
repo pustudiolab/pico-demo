@@ -18,6 +18,7 @@ for note in range(1, 49):
     print(str(note_names[note % 12]) + ' ' + str(note_frequencies[-1]))
 
 # Read music csv file
+# Change this to mario_2.txt to hear a different tone!
 music = []
 with open('mario_1.txt','r') as file:
     for line in file:
