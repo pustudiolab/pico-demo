@@ -21,19 +21,19 @@ raw_readings = []
 while True:
     utime.sleep(0.01)
     raw_readings.append(pr.read_u16())
-    if len(raw_readings) > 1000:
+    if len(raw_readings) > 250:
         raw_readings = raw_readings[1:]
     
-    if (len(raw_readings) < 10):
+    if (len(raw_readings) < 50):
         continue
 
-    raw_reading = sum(raw_readings[-10:]) / 10
+    raw_reading = sum(raw_readings[-50:]) / 50
     mxsf = max(raw_readings)
     mnsf = min(raw_readings)
 
     # Value from 0 to 1 
     value = (mxsf - raw_reading) / (abs(mxsf-mnsf)+1)
-    light_level = round(8 * value)
+    light_level = min(8, round(10 * value))
     if mnsf < mxsf:
         for led in leds[0:light_level-1]:
             led.on()
