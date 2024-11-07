@@ -29,7 +29,7 @@ buttons = [13, 12, 11, 10]
 for x in range(len(buttons)):
     buttons[x] = Pin(buttons[x], Pin.IN, Pin.PULL_UP)
     
-program_control = Pin(14, Pin.IN, Pin.PULL_UP)
+program_button = Pin(14, Pin.IN, Pin.PULL_UP)
 
 # light sensor is ADC(26)
 pot1 = ADC(27)
@@ -52,9 +52,14 @@ def BinaryDisplay(num, its):
 ##### LOOP #############################################        
 
 while True:
-# 
-#     # LED Test ----------------------------    
+    end_program = False
     for step in range(255):       
+        if program_button.value() == 0:
+                utime.sleep(0.1)
+                if program_button.value() == 0:
+                    end_program = True
+                    break
+
         BinaryDisplay(step,0)
         raw_value = pot1.read_u16() / 65535
         # the potentiometer output is nonlinear,
@@ -63,8 +68,10 @@ while True:
         utime.sleep(speedFactor + 0.1)
         print(step, speedFactor)
 
-        if not buttons[1].value():
+        if not buttons[0].value():
             break
+    if end_program:
+        break
 #              
 # 
 #     for pin in range(1, 30):

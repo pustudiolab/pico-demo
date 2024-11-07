@@ -12,10 +12,18 @@ for x in range(len(rgb)):
     rgb[x] = Pin(rgb[x], Pin.OUT)
     rgb[x].on()
 
+program_button = Pin(14, Pin.IN, Pin.PULL_UP)
+
 amplitude = 65025
 
 t = 0
 while True:
+    # quit if program button pressed
+    # if program_button.value() == 0:
+    #     sleep(0.1)
+    #     if program_button.value() == 0:
+    #         break
+
     if t > 2 * amplitude:
         t = 0
     for i, led in enumerate(leds):
