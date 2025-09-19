@@ -90,7 +90,7 @@ while True:
     binary_display(leds, 0)
     
     def get_prog_num(light_level):
-        return (1<<min(max(light_level,0),8))-1
+        return (1<<min(max(light_level,0),6))-1
 
     # Select program
     # - uses average of last ten pot readings and converts to binary
@@ -107,7 +107,7 @@ while True:
             prog_num = get_prog_num(light_level)
             binary_display(leds, prog_num)
         
-    searchnum = min(max(light_level,0),8)
+    searchnum = min(max(light_level,0),6)
     binary_display(leds, searchnum)
     
     print("Running program: ", searchnum, programs[searchnum-1])
